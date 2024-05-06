@@ -1,0 +1,4 @@
+- targets: ["10.44.10.1:9114"]
+  labels:
+    hostname: "lastic-01"
+    environment: "elastic-production"

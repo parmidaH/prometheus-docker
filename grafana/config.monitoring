@@ -1,0 +1,9 @@
+GF_SECURITY_ADMIN_PASSWORD=OneFailsForwardTowardSuccess_ae
+GF_USERS_ALLOW_SIGN_UP=false
+GF_AUTH_LDAP_ENABLED=true
+GF_AUTH_LDAP_CONFIG_FILE=/opt/grafana/ldap.toml
+GF_PATHS_CONFIG=/opt/grafana/grafana.ini
+
+
+MYSQL_DATABASE=grafana
+MYSQL_ROOT_PASSWORD=1234

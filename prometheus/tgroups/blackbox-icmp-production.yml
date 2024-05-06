@@ -1,0 +1,7 @@
+- targets: ['19.168.10.2']
+  labels:
+    hostname: 'test2.prd'
+
+- targets: ['19.168.10.1']
+  labels:
+    hostname: 'test1.prd'

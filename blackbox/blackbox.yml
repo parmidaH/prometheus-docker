@@ -1,0 +1,125 @@
+modules:
+  blackbox-http-2xx:
+    prober: http
+    timeout: 25s
+    http:
+      valid_http_versions: ["HTTP/1.0", "HTTP/1.1", "HTTP/2.0"]
+      method: GET
+      valid_status_codes: [200, 204]
+      fail_if_ssl: false
+      fail_if_not_ssl: false
+      preferred_ip_protocol: ip4
+      tls_config:
+        insecure_skip_verify: true
+
+  blackbox-http-3xx:
+    prober: http
+    timeout: 25s
+    http:
+      valid_http_versions: ["HTTP/1.0", "HTTP/1.1", "HTTP/2.0"]
+      method: GET
+      valid_status_codes: [300, 301, 302]
+      fail_if_ssl: false
+      fail_if_not_ssl: false
+      preferred_ip_protocol: ip4
+      tls_config:
+        insecure_skip_verify: true
+
+  blackbox-http-4xx:
+    prober: http
+    timeout: 25s
+    http:
+      valid_http_versions: ["HTTP/1.0", "HTTP/1.1", "HTTP/2.0"]
+      method: GET
+      valid_status_codes: [404, 400, 405, 401]
+      fail_if_ssl: false
+      fail_if_not_ssl: false
+      preferred_ip_protocol: ip4
+      tls_config:
+        insecure_skip_verify: true
+
+  blackbox-http-5xx:
+    prober: http
+    timeout: 25s
+    http:
+      valid_http_versions: ["HTTP/1.0", "HTTP/1.1", "HTTP/2.0"]
+      method: GET
+      valid_status_codes: [507, 500, 505, 508]
+      fail_if_ssl: false
+      fail_if_not_ssl: false
+      preferred_ip_protocol: ip4
+      tls_config:
+        insecure_skip_verify: true
+
+  blackbox-uptime-http-2xx:
+    prober: http
+    timeout: 25s
+    http:
+      valid_http_versions: ["HTTP/1.0", "HTTP/1.1", "HTTP/2.0"]
+      method: GET
+      valid_status_codes: [200]
+      fail_if_ssl: false
+      fail_if_not_ssl: false
+      preferred_ip_protocol: ip4
+      tls_config:
+        insecure_skip_verify: true
+
+  blackbox-uptime-snappfood-http-2xx:
+    prober: http
+    timeout: 25s
+    http:
+      valid_http_versions: ["HTTP/1.0", "HTTP/1.1", "HTTP/2.0"]
+      valid_status_codes: [200]
+      method: GET
+      preferred_ip_protocol: "ip4"
+      ip_protocol_fallback: false
+      fail_if_body_not_matches_regexp: ['.*true.*']
+
+  blackbox-tcp:
+    prober: tcp
+    timeout: 5s
+
+  blackbox-icmp:
+    prober: icmp
+    timeout: 5s
+    icmp:
+      preferred_ip_protocol: "ip4"
+
+  blackbox-payment-decider:
+    prober: http
+    timeout: 25s
+    http:
+      valid_http_versions: ["HTTP/1.0", "HTTP/1.1", "HTTP/2.0"]
+      method: GET
+      valid_status_codes: [200, 201, 401, 508, 405, 507]
+      fail_if_ssl: false
+      fail_if_not_ssl: false
+      preferred_ip_protocol: ip4
+      tls_config:
+        insecure_skip_verify: true
+
+  snapp-radar-2xx:
+    prober: http
+    timeout: 10s
+    http:
+      valid_http_versions: ["HTTP/1.0", "HTTP/1.1", "HTTP/2.0"]
+      method: GET
+      valid_status_codes: []
+      fail_if_ssl: false
+      fail_if_not_ssl: false
+      preferred_ip_protocol: ip4
+      tls_config:
+        insecure_skip_verify: true
+
+  snapp-radar-4xx:
+    prober: http
+    timeout: 10s
+    http:
+      valid_http_versions: ["HTTP/1.0", "HTTP/1.1", "HTTP/2.0"]
+      method: GET
+      valid_status_codes: [404, 400, 405, 401]
+      fail_if_ssl: false
+      fail_if_not_ssl: false
+      preferred_ip_protocol: ip4
+      tls_config:
+        insecure_skip_verify: true

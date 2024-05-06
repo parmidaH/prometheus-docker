@@ -1,0 +1,15 @@
+
+- targets:
+  - "https://www.aparat.com/"
+  labels:
+    service: "aparat"
+
+- targets:
+  - "https://www.digikala.com/"
+  labels:
+    service: "digikala"
+
+- targets:
+  - "https://www.varzesh3.com/"
+  labels:
+    service: "varzesh3"

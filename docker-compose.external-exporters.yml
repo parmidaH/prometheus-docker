@@ -1,0 +1,63 @@
+version: '3'
+
+services:
+  elasticsearch_exporter:
+    image: prometheuscommunity/elasticsearch-exporter:latest
+    command:
+      - '--es.uri=https://prometheus-exporter:IvSCf5+uaCoRgBlr@elastic-es.test.com'
+      - '--es.ssl-skip-verify'
+      - '--es.all'
+      - '--es.indices'
+      - '--es.indices_settings'
+      - '--es.indices_mappings'
+      - '--es.shards'
+      - '--es.data_stream'
+      - '--es.timeout=10s'
+    restart: always
+    ports:
+      - "9114:9114"
+    profiles:
+      - elk
+    logging:
+      driver: json-file
+      options:
+        max-file: '3'
+        max-size: 150m
+    labels:
+      org.label-schema.group: "monitoring"
+      org.label-schema.description: "ElasticSearch Exporter"
+
+  redis_exporter:
+    image: oliver006/redis_exporter:latest
+    command:
+      - '--redis.addr=redis://192.168.1.1:6379'
+    restart: always
+    ports:
+      - "9121:9121"
+    logging:
+      driver: json-file
+      options:
+        max-file: '3'
+        max-size: 150m
+    labels:
+      org.label-schema.group: "monitoring"
+      org.label-schema.description: "Redis Exporter"
+
+  rabbitmq_prod_exporter:
+    image: kbudde/rabbitmq-exporter:latest
+    environment:
+      - RABBIT_URL=https://rabbit-panel.test.com
+      - RABBIT_USER=exporter-srv-acc
+      - RABBIT_PASSWORD=1234
+      - RABBIT_EXPORTERS=connections,shovel,federation,exchange,node,queue,memory
+    restart: always
+    ports:
+      - "9420:9419"
+    logging:
+      driver: json-file
+      options:
+        max-file: '3'
+        max-size: 150m
+    labels:
+      org.label-schema.group: "monitoring"
+      org.label-schema.description: "Rabbit-prod Exporter"

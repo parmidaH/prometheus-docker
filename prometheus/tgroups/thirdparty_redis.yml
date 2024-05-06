@@ -1,0 +1,4 @@
+- targets: ["redis_exporter:9121"]
+  labels:
+    hostname: "redis-pos"
+    environment: redis-production"

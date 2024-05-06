@@ -1,0 +1,4 @@
+- targets: ["192.168.20.1:15692"]
+  labels:
+    hostname: "rabbitmq-prod-self-1"
+    environment: "production"
